@@ -1,8 +1,8 @@
 <?php 
-  $host = "";
-  $username  = "";
-  $passwd = "";
-  $dbname = "";
+  $host = "localhost";
+  $username  = "root";
+  $passwd = "fngHiG63l5.98";
+  $dbname = "devdb2";
 
 //Creating a connection
 $conexao = new mysqli($host, $username, $passwd, $dbname);
@@ -76,10 +76,56 @@ function editar_veiculo($conexao, $carro) {
 }
 
 
-function remover_carro($conexao, $id) {
+function remover_carro($conexao, $id) 
+{
     $sqlRemover = "DELETE FROM veiculos WHERE id = {$id}";
 
     mysqli_query($conexao, $sqlRemover);
+}
+
+
+
+
+
+function remover_anexo ($conexao, $carro_id)
+{
+    $sqlremover_anexo = "DELETE FROM anexos  WHERE carro_id = {$carro_id}";
+
+    mysqli_query($conexao, $sqlremover_anexo);
+}
+
+
+
+
+function gravar_anexo($conexao, $anexo)
+{
+    $sqlgravar = "INSERT INTO anexos (carro_id, nome, arquivo)
+    VALUES
+    (
+        {$anexo['carro_id']},
+        '{$anexo['nome']}',
+        '{$anexo['arquivo']}'
+    
+    )
+    ";
+
+    mysqli_query($conexao, $sqlgravar);
+}
+
+
+
+function buscar_anexos($conexao, $carro_id)
+{
+    $sql = "SELECT * FROM anexos WHERE carro_id = {$carro_id}";
+    $resultado = mysqli_query($conexao, $sql);
+
+    $anexos = array();
+
+    while ($anexo = mysqli_fetch_assoc($resultado)) {
+        $anexos[] = $anexo;
+    }
+
+    return $anexos;
 }
 
 

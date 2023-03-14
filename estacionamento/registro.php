@@ -49,9 +49,8 @@ if(tem_post()) {
         $carro['placa'] = $_POST['placa'];
     } else {
         $tem_erros = true;
-        $erros_validacao['placa'] = 'A placa do carro é obrigatorio';
+        $erros_validacao['placa'] = 'A placa esta incorreta ';
     }
-
     
     if (isset($_POST['cor']) && strlen($_POST['cor']) > 0) {
         $carro['cor'] = $_POST['cor'];
@@ -59,7 +58,6 @@ if(tem_post()) {
         $tem_erros = true;
         $erros_validacao['cor'] = 'A cor do carro é obrigatorio';
     }
-
 
 
     if (isset($_POST['horaentrada']) && strlen($_POST['horaentrada']) > 0) {
@@ -106,6 +104,7 @@ $lista_carros = buscar_veiculos($conexao);
 
 $carro = array(
     'id' => 0,
+    
     'marca' => (isset($_POST['marca'])) ? $_POST['marca'] : '',
 
     'modelo' => (isset($_POST['modelo'])) ? $_POST['modelo'] : '',

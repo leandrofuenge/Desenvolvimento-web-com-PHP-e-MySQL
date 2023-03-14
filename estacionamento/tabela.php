@@ -12,7 +12,13 @@
         </tr>
             <?php foreach ($lista_carros as $carro) : ?>
                   <tr>
-                     <td><?php echo $carro['marca']; ?></td>
+
+                     <td>
+                    <a href="carro.php?id=<?php echo $carro['id']; ?>">    
+                     <?php echo $carro['marca']; ?>
+                  
+                    </td>
+
                      <td><?php echo $carro['modelo']; ?></td>
                      <td><?php echo $carro['ano']; ?></td>  
                      <td><?php echo $carro['renavam']; ?></td>
@@ -23,6 +29,8 @@
                      <td><?php echo traduz_data_para_exibir($carro['prazo']); ?></td>
                      <td> <a href="editar.php?id=<?php echo $carro['id']; ?>"> Editar</a>   
                      <a href="remover.php?id=<?php echo $carro['id']; ?>"> Remover </a> 
+                     
+
                   </tr>
       <?php endforeach; ?>
 </table>            

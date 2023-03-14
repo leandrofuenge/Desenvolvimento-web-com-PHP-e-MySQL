@@ -36,21 +36,6 @@ if (tem_post()) {
         $erros_validacao['descricao'] = 'O nome da descricao é obrigatório';
     }
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (isset($_POST['prazo']) && strlen($_POST['prazo']) > 0) {
 
         if (validar_data($_POST['prazo'])) {
